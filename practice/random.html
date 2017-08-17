@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机生成10个不重复的0-100的数字</title>
+</head>
+<body>
+	<a href="http://www.cnblogs.com/zhengxj1991/p/7366152.html">随机生成10个不重复的0-100的数字</a>
+	<script>
+		function random(len, start, end) {
+		　　var arr = [];
+		　　function _inner(start, end) {
+		　　　　var span = end - start;
+		　　　　return parseInt(Math.random() * span + start)
+		　　}
+		　　while (arr.length < len) {
+		　　　　var num = _inner(start, end);
+		　　　　　　if (arr.indexOf(num) == -1) {
+		　　　　　　　　arr.push(num);
+		　　　　　　}
+		　　　　}
+		　　　　return arr;
+		　　}
+		}
+	</script>
+</body>
+</html>
