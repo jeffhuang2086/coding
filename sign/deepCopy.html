@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="http://www.cnblogs.com/Loofah/archive/2012/03/23/2413665.html">实现JS数组的深拷贝</a>
+    <script>
+	    var arr1 = ["1", "2", "3"],
+	        arr2;
+	    arr2 = arr1.slice(0);
+	    arr1[0] = 0; //改变arr1第一个元素
+	    alert("arr2[0]：" + arr2[0]); //不影响arr2
+	    var arr3 = ["1", "2", "3"],
+	        arr4;
+	    arr4 = arr3.concat();
+	    arr3[0] = 0; //改变arr3第一个元素
+	    alert("arr4[0]：" + arr4[0]); //不影响arr4
+    </script>
+    <script type="text/javascript">
+    <!--
+        var a1=[["1","2","3"],"2","3"],a2;
+        a2=a1.slice(0);
+        a1[0][0]=0; //改变a1第一个元素中的第一个元素
+        alert(a2[0][0]);  //影响到了a2
+    -->
+    </script>
+    <script type="text/javascript">
+    <!--
+        function extend(destination,source)
+        {
+            for(var property in source)
+            {destination[property]=source[property];}
+        }
+    -->
+    </script>
+</body>
+
+</html>
