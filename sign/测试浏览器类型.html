@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    window.onload = function() {
+        //测试媒体类型
+        let checkMimeType = function(option, value) {
+            var mimeTypes = navigator.mimeTypes;
+            for (var mt in mimeTypes) {
+                if (mimeTypes[mt][option] == value) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        let judge = function() {
+            let agent = navigator.userAgent;
+            // alert(agent);
+            let ie = /Trident\/(\d+\.)+\d+/ig;
+            let ff = /Firefox\/(\d+\.)+\d+/ig;
+            let chrome = /Chrome\/(\d+\.)+\d+/ig; //谷歌，360
+            let saf = /Safari\/(\d+\.)+\d+/ig; //苹果
+            let opr = /OPR\/(\d+\.)+\d+/ig;
+            let is360 = checkMimeType("type", "application/vnd.chromium.remoting-viewer");
+            //如果存在Firefox，就返回与之匹配的正则
+            if (agent.match(ff)) {
+                return "火狐--" + agent.match(ff);
+            } else if (agent.match(ie)) {
+                return "IE--" + agent.match(ie);
+            } else if (agent.match(saf) && !agent.match(chrome)) { //找到苹果，但找不到谷歌
+                return "苹果--" + agent.match(saf);
+            } else if (agent.match(chrome)) { //有谷歌
+                if (agent.match(opr)) { //判断是否是欧鹏
+                    return "欧鹏--" + agent.match(opr);
+                } else if (is360) { //判断是否是360
+                    return "360--" + agent.match(chrome);
+                }
+                return "谷歌--" + agent.match(chrome);
+            }
+        }
+        let browser = judge();
+        alert(browser);
+        //只看版本
+        // let verinfo = (browser+"").replace(/[^\d.]/ig,""); //用空去替代返回的字符串出现的非数字
+        // alert(verinfo); 
+    }
+    </script>
+</body>
+
+</html>
